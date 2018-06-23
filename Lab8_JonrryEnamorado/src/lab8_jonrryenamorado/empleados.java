@@ -5,13 +5,14 @@
  */
 package lab8_jonrryenamorado;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author wende
  */
-public class empleados {
+public class empleados  implements Serializable{
     private String name;
     private long id;
     private String pass;
@@ -20,6 +21,7 @@ public class empleados {
     private String puesto;
     ArrayList <empleados> listaempleados = new ArrayList();
 
+     private static final long SerialVersonUID = 777L;
     public empleados() {
     }
 

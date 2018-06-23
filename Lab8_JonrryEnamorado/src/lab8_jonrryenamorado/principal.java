@@ -6,8 +6,11 @@
 package lab8_jonrryenamorado;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -17,6 +20,7 @@ import javax.swing.tree.DefaultTreeModel;
  */
 public class principal extends javax.swing.JFrame {
 
+    
     /**
      * Creates new form principal
      */
@@ -33,6 +37,13 @@ public class principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        opciones = new javax.swing.JPopupMenu();
+        depedir = new javax.swing.JMenuItem();
+        cambiar = new javax.swing.JMenuItem();
+        ascender = new javax.swing.JMenuItem();
+        mensajes = new javax.swing.JDialog();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
         tab1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -63,6 +74,52 @@ public class principal extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tree = new javax.swing.JTree();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        cb_de = new javax.swing.JComboBox<>();
+        cb_para = new javax.swing.JComboBox<>();
+        broadcast = new javax.swing.JCheckBox();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        mensaje = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+
+        depedir.setText("Despedir");
+        depedir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                depedirActionPerformed(evt);
+            }
+        });
+        opciones.add(depedir);
+
+        cambiar.setText("Cambiar con...");
+        opciones.add(cambiar);
+
+        ascender.setText("Ascender");
+        opciones.add(ascender);
+
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Enviado por:", "Enviado a:", "Contenido"
+            }
+        ));
+        jScrollPane3.setViewportView(tabla);
+
+        javax.swing.GroupLayout mensajesLayout = new javax.swing.GroupLayout(mensajes.getContentPane());
+        mensajes.getContentPane().setLayout(mensajesLayout);
+        mensajesLayout.setHorizontalGroup(
+            mensajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
+        );
+        mensajesLayout.setVerticalGroup(
+            mensajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -271,6 +328,101 @@ public class principal extends javax.swing.JFrame {
 
         tab1.addTab("Mostrar", jPanel6);
 
+        jLabel1.setText("De: ");
+
+        jLabel2.setText("Para:");
+
+        cb_de.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_deItemStateChanged(evt);
+            }
+        });
+
+        broadcast.setText("BROADCAST");
+        broadcast.setEnabled(false);
+        broadcast.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                broadcastItemStateChanged(evt);
+            }
+        });
+
+        mensaje.setColumns(20);
+        mensaje.setRows(5);
+        jScrollPane1.setViewportView(mensaje);
+
+        jLabel3.setText("Mensaje:");
+
+        jButton1.setText("Enviar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
+        jButton2.setText("LOG");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cb_de, 0, 114, Short.MAX_VALUE)
+                                    .addComponent(cb_para, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(broadcast)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(103, 103, 103)
+                .addComponent(jButton1)
+                .addGap(94, 94, 94)
+                .addComponent(jButton2)
+                .addGap(0, 153, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(cb_de, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(cb_para, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(broadcast))
+                .addGap(27, 27, 27)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(72, Short.MAX_VALUE))
+        );
+
+        tab1.addTab("Mensajeria", jPanel1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -328,11 +480,62 @@ public class principal extends javax.swing.JFrame {
 
     private void treeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_treeMouseClicked
         // TODO add your handling code here:
+        if (evt.isMetaDown()) {
+            int row = tree.getClosestRowForLocation(evt.getX(), evt.getY());
+            tree.setSelectionRow(row);
+            Object v1 = tree.getSelectionPath().getLastPathComponent();
+
+            nodo_seleccionado = (DefaultMutableTreeNode) v1;
+            empleado_sel = (empleados) nodo_seleccionado.getUserObject();
+            opciones.show(evt.getComponent(), evt.getX(), evt.getY());
+
+        }
     }//GEN-LAST:event_treeMouseClicked
-        empleados global = new empleados();
+    empleados global = new empleados();
     private void tab1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tab1StateChanged
         // TODO add your handling code here:
-        if(tab1.getSelectedIndex()==1){
+        if (tab1.getSelectedIndex() == 1) {
+            global = new empleados();
+            global = lista.get(0);
+            DefaultMutableTreeNode root = new DefaultMutableTreeNode(global);
+            listar_tree(global, root);
+
+            DefaultTreeModel m = new DefaultTreeModel(root);
+            tree.setModel(m);
+        }
+        if (tab1.getSelectedIndex() == 2) {
+            DefaultComboBoxModel c = new DefaultComboBoxModel(lista.toArray());
+            cb_de.setModel(c);
+            
+            DefaultComboBoxModel f = new DefaultComboBoxModel(lista.toArray());
+            f.removeElementAt(0);
+            cb_para.setModel(f);
+            broadcast.setEnabled(true);
+
+        }
+
+
+    }//GEN-LAST:event_tab1StateChanged
+
+    private void depedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_depedirActionPerformed
+        // TODO add your handling code here:
+        int x = 0;
+        for (empleados t : lista) {
+            if (t.getName().equals(empleado_sel.getName())) {
+                if (t.getPuesto().equals("Gerencia") && !t.getListaempleados().isEmpty()) {
+                    empleados temp = t.getListaempleados().get(t.getListaempleados().size() - 1);
+                    for (empleados p : t.getListaempleados()) {
+                        p.setJefe(temp);
+                    }
+                    temp.setJefe(t.getJefe());
+                    lista.set(x, temp);
+                    global = new empleados();
+
+                }
+
+            }
+            x++;
+        }
         global = new empleados();
         global = lista.get(0);
         DefaultMutableTreeNode root = new DefaultMutableTreeNode(global);
@@ -340,10 +543,127 @@ public class principal extends javax.swing.JFrame {
 
         DefaultTreeModel m = new DefaultTreeModel(root);
         tree.setModel(m);
+        nodo_seleccionado.setUserObject(evt);
+
+    }//GEN-LAST:event_depedirActionPerformed
+
+    private void cb_deItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_deItemStateChanged
+        // TODO add your handling code here:
+        DefaultComboBoxModel m = new DefaultComboBoxModel(lista.toArray());
+        m.removeElement(cb_de.getSelectedItem());
+        cb_para.setModel(m);
+        empleados tmp = (empleados) cb_de.getSelectedItem();
+        if (tmp.getPuesto().equals("Gerencia") || tmp.getPuesto().equals("Gerente General")) {
+            broadcast.setEnabled(true);
+        } else {
+            broadcast.setEnabled(false);
         }
+
+    }//GEN-LAST:event_cb_deItemStateChanged
+
+    private void broadcastItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_broadcastItemStateChanged
+        // TODO add your handling code here:
+        if (broadcast.isSelected()) {
+            cb_para.setEnabled(false);
+        } else {
+            cb_para.setEnabled(true);
+
+        }
+    }//GEN-LAST:event_broadcastItemStateChanged
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        if (broadcast.isSelected()) {
+            mensajes nm = new mensajes();
+            nm.setCifrado(false);
+            nm.setFuente(cb_de.getSelectedItem().toString());
+            ArrayList destino = ((empleados) cb_de.getSelectedItem()).getListaempleados();
+            nm.setDestino(destino);
+            nm.setMensaje(mensaje.getText());
+            adminMensajes am = new adminMensajes("./mensajes.rt");
+            am.cargarArchivo();
+            am.setMensaje(nm);
+            am.escribirArchivo();
+            JOptionPane.showMessageDialog(rootPane, "MENSAJE ENVIADO");
+        } else {
+            mensajescifrados nmc = new mensajescifrados();
+            nmc.setCifrado(true);
+            nmc.setFuente(cb_de.getSelectedItem().toString());
+            nmc.setDestino(cb_para.getSelectedItem().toString());
+            nmc.setMensaje(mensaje.getText());
+            codificar(nmc);
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        adminMensajes am = new adminMensajes("./mensajes.rt");
+        am.cargarArchivo();
+        DefaultTableModel m = (DefaultTableModel) tabla.getModel();
         
-        
-    }//GEN-LAST:event_tab1StateChanged
+        for (mensajes t : am.getListaMensajes()) {
+            String destiny = "";
+            for (Object i : t.getDestino()) {
+                destiny += ((empleados)i).getName();
+            }
+            Object row[] = {t.getFuente(), destiny, t.getMensaje()};
+            m.addRow(row);
+        }
+        tabla.setModel(m);
+        mensajes.setModal(true);
+        mensajes.pack();
+        mensajes.setLocationRelativeTo(this);
+        mensajes.setVisible(true);
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    public void codificar(mensajescifrados nmc) {
+        String[] count = new String[nmc.getMensaje().length() - 1];
+        count = nmc.getMensaje().split("(?!^)");
+
+        ArrayList<letras> tabla = new ArrayList();
+        for (String t : count) {
+            int x = 0;
+
+            for (String t2 : count) {
+
+                if (t.equals(t2)) {
+                    x++;
+                }
+            }
+
+            tabla.add(new letras(t, x));
+
+        }
+        System.out.println(tabla);
+        letras swap;
+        int length = tabla.size();
+        for (int i = 0; i < length; i++) {
+            for (int j = i + 1; j < length; j++) {
+                if (tabla.get(i).getLetra().equals(tabla.get(j).getLetra())) {
+                    int temp = j;
+                    for (int k = temp; k < length - 1; k++) {
+                    	tabla.set(k, tabla.get(k+1));
+                    }
+                    j--;
+                    length--;
+ 
+                }
+            }
+        }
+
+        for (int i = 0; i < tabla.size() - 1; i++) {
+            for (int j = 0; j < tabla.size() - 1; j++) {
+                if (tabla.get(j).getNumber() > tabla.get(j + 1).getNumber()) {
+                    swap = tabla.get(j);
+                    tabla.set(j, tabla.get(j + 1));
+                    tabla.set(j + 1, swap);
+                }
+            }
+        }
+        System.out.println(tabla);
+
+    }
+
     public void listar_tree(empleados p_raiz, DefaultMutableTreeNode nodo) {
         try {
 
@@ -351,10 +671,10 @@ public class principal extends javax.swing.JFrame {
 
             for (empleados temp : l3) {
                 if (temp.getListaempleados().isEmpty()) {
-                    DefaultMutableTreeNode n = new DefaultMutableTreeNode(temp.getName());
+                    DefaultMutableTreeNode n = new DefaultMutableTreeNode(temp);
                     nodo.add(n);
                 } else {
-                    DefaultMutableTreeNode n = new DefaultMutableTreeNode(temp.getName());
+                    DefaultMutableTreeNode n = new DefaultMutableTreeNode(temp);
                     nodo.add(n);
                     listar_tree(temp, n);
 
@@ -400,6 +720,12 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem ascender;
+    private javax.swing.JCheckBox broadcast;
+    private javax.swing.JMenuItem cambiar;
+    private javax.swing.JComboBox<String> cb_de;
+    private javax.swing.JComboBox<String> cb_para;
+    private javax.swing.JMenuItem depedir;
     private javax.swing.JTextField emp_id;
     private javax.swing.JTextField emp_name;
     private javax.swing.JPasswordField emp_pass;
@@ -409,10 +735,14 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JTextField gg_id;
     private javax.swing.JPasswordField gg_pass;
     private javax.swing.JTextField gg_sal;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -422,15 +752,24 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JTextArea mensaje;
+    private javax.swing.JDialog mensajes;
+    private javax.swing.JPopupMenu opciones;
     private javax.swing.JComboBox<String> padre;
     private javax.swing.JTabbedPane tab1;
+    private javax.swing.JTable tabla;
     private javax.swing.JTree tree;
     // End of variables declaration//GEN-END:variables
     ArrayList<empleados> lista = new ArrayList();
-
+    DefaultMutableTreeNode nodo_seleccionado;
+    empleados empleado_sel = new empleados();
 }
